@@ -12,7 +12,7 @@ In `group-theory/`,
 
 - `co0-actions.gap` computes the S, T, P, Sq and Z actions on the commuting pairs. This is to be run by loading the workspace created above with the -L option.
 
-- `co0-picture.nb` creates the nice picture of SL(2,Z) orbits of commuting pairs of Conway 0.
+- `co0-actions.nb` creates the nice picture of SL(2,Z) orbits of commuting pairs of Conway 0. It also saves `co0orbits.m` along the way, containing the data of SL(2,Z) orbits.
 
 - `co0-irr.gap` computes the character tables of the centralizers of the representatives of the  conjugacy classes of the Conway 0 group. This is also to be run by loading the workspace.
 
@@ -26,9 +26,9 @@ Note that the for-loops in `co0-actions.gap` and `co0-irr.gap` should better be 
 
 - `co1-genmat.nb` similarly creates `data/co1matrices.m`.
 
-- `co1-actions.nb` computes the S, T, and P actions for commuting pairs of Conway 1.
+- `co1-actions.gap` computes the S, T, and P actions for commuting pairs of Conway 1.
 
-- `co1-picture.nb` creates the nice picture of SL(2,Z) orbits of commuting pairs of Conway 1.
+- `co1-actions.nb` creates the nice picture of SL(2,Z) orbits of commuting pairs of Conway 1.
 
 - `projection.gap` computes the projection from commuting pairs of Co0 to commuting pairs of Co1. 
 
@@ -44,8 +44,10 @@ In `data/`,
 
 - `co0actions.m` contains the table of various actions on commuting pairs.
 
+- `co0orbits.m` contains the SL(2,Z) orbits of commuting pairs of Conway 0.
+
 - `irr0/irr-nnn.m` contains the character tables of the centralizers of representatives of conjugacy classes of the Conway 0 group. EE[n] is $e^{2\pi i/n}$.
 
-- `co1sizes.m`, `co1images.m`, `co1actions.m`, and `irr1/irr-nnn.m` do the same for Conway 1.
+- `co1sizes.m`, `co1images.m`, `co1actions.m`, `co1orbits.m` and `irr1/irr-nnn.m` do the same for Conway 1.
 
 - `projection.m` contains the mapping from Conway 0 commuting pairs to Conway 1 commuting pairs.
