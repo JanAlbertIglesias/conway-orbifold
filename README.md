@@ -1,0 +1,41 @@
+### Files
+
+In `group-theory/`, 
+
+- `co0-prepare.nb` starts from two 24 x 24 integer matrix generators of Conway 0 and generates permutation representations on the set of length 2 vectors in GAP notation. Running it also generates `data/co0data.m`, which is required to run some of other programs.
+
+- `co0-g1g2.txt` contains the generated permutation representations.
+
+- `co0-prepare.gap` creates the Conway 0 group in memory, and computes the commuting pairs. It saves the memory to a workspace.
+
+- `co0-actions.gap` computes the S, T, P, Sq and Z actions on the commuting pairs. This is to be run by loading the workspace created above with the -L option.
+
+- `co0-picture.nb` creates the nice picture of SL(2,Z) orbits of commuting pairs of Conway 0.
+
+- `co0-irr.gap` computes the character tables of the centralizers of the representatives of the  conjugacy classes of the Conway 0 group. This is also to be run by loading the workspace.
+
+Note that the for-loops in `co0-actions.gap` and `co0-irr.gap` should better be run parallel using a cluster by submitting jobs for each conjugacy class. Even then, for four conjugacy classes (#1 and #2, whose centralizers are Conway 0 itself, and #25 and #26, whose centralizers are 6.Suz), the computation of the character tables ran out of memory of the cluster we used (with 256 Gbytes of memory). For these classes, we take the character tables from the ATLAS, and match the ATLAS conjugacy classes to ours using the argument given in the paper.
+
+- This procedure of mapping ATLAS conjugacy classes to ours are implemented in `tweak.nb`.
+
+- `co0-genmat.nb` creates `data/co0matrices.m`, the file containing explicit pairs of 24 x 24 integer matrices of commuting pairs, based on `data/co0images.m` and `data/conway0data.m`.
+
+- `co1-prepare.nb` similarly constructs two generators of the permutation representation of Conway 1 on the set of length 2 vectors modulo ±1 in GAP notation. This creates `data/co1data.m` too.
+
+- `co1-genmat.nb` similarly creates `data/co1matrices.m`.
+
+- `co0-picture.nb` creates the nice picture of SL(2,Z) orbits of commuting pairs of Conway 1.
+
+In `data/`,
+
+- `co0sizes.m` contains the size of the conjugacy classes of the centralizers of representatives of conjugacy classes of the Conway 0 group.
+
+- `co0images.m` contains the commuting pairs in an abbreviated form.
+
+- `co0actions.m` contains the table of various actions on commuting pairs.
+
+- `irr0/irr-nnn.m` contains the character tables of the centralizers of representatives of conjugacy classes of the Conway 0 group. EE[n] is $e^{2\pi i/n}$.
+
+- `co1sizes.m`, `co1images.m`, `co1actions.m`, and `irr1/irr-nnn.m` do the same for Conway 1.
+
+
