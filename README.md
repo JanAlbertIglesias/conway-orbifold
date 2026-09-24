@@ -14,6 +14,8 @@ In `group-theory/`,
 
 - `co0-actions.nb` creates the nice picture of SL(2,Z) orbits of commuting pairs of Conway 0. It also saves `co0orbits.m` along the way, containing the data of SL(2,Z) orbits.
 
+- `co0-orbitData.nb` computes `betterOrbitRep`, `pacOnOrbitResult`, and `cpxOrbits`, some auxiliary data necessary in later computations, and save them in `co0orbitData.m`.
+
 - `co0-irr.gap` computes the character tables of the centralizers of the representatives of the  conjugacy classes of the Conway 0 group. This is also to be run by loading the workspace.
 
 Note that the for-loops in `co0-actions.gap` and `co0-irr.gap` should better be run parallel using a cluster by submitting jobs for each conjugacy class. Even then, for four conjugacy classes (#1 and #2, whose centralizers are Conway 0 itself, and #25 and #26, whose centralizers are 6.Suz), the computation of the character tables ran out of memory of the cluster we used (with 256 Gbytes of memory). For these classes, we take the character tables from the ATLAS, and match the ATLAS conjugacy classes to ours using the argument given in the paper.
@@ -45,6 +47,8 @@ In `data/`,
 - `co0actions.m` contains the table of various actions on commuting pairs.
 
 - `co0orbits.m` contains the SL(2,Z) orbits of commuting pairs of Conway 0.
+
+- `co0orbitData.m` contains `betterOrbitRep`, `pacOnOrbitResult`, and `cpxOrbits`.
 
 - `irr0/irr-nnn.m` contains the character tables of the centralizers of representatives of conjugacy classes of the Conway 0 group. EE[n] is $e^{2\pi i/n}$.
 
