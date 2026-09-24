@@ -1,4 +1,4 @@
-### Group Theory Computations
+### Group Theory Computations for Conway 0
 
 In `group-theory/`, 
 
@@ -14,7 +14,7 @@ In `group-theory/`,
 
 - `co0-actions.nb` creates the nice picture of SL(2,Z) orbits of commuting pairs of Conway 0. It also saves `co0orbits.m` along the way, containing the data of SL(2,Z) orbits.
 
-- `co0-orbitData.nb` computes `betterOrbitRep`, `pacOnOrbitResult`, and `cpxOrbits`, some auxiliary data necessary in later computations, and save them in `co0orbitData.m`.
+- `co0-orbitData.nb` computes `betterOrbitRep`, `pacOnOrbitResult`, and `cpxOrbits`, some auxiliary data necessary in later computations, and save them in `co0orbitData.m`. In particular, `betterOrbitRep` contains the list of "better" representatives of SL(2,Z) orbits of commuting pairs, as explained in the main text.
 
 - `co0-irr.gap` computes the character tables of the centralizers of the representatives of the  conjugacy classes of the Conway 0 group. This is also to be run by loading the workspace.
 
@@ -23,18 +23,6 @@ Note that the for-loops in `co0-actions.gap` and `co0-irr.gap` should better be 
 - This procedure of mapping ATLAS conjugacy classes to ours are implemented in `tweak.nb`.
 
 - `co0-genmat.nb` creates `data/co0matrices.m`, the file containing explicit pairs of 24 x 24 integer matrices of commuting pairs, based on `data/co0images.m` and `data/conway0data.m`.
-
-- `co1-prepare.nb` similarly constructs two generators of the permutation representation of Conway 1 on the set of length 2 vectors modulo ±1 in GAP notation. This creates `data/co1data.m` too.
-
-- `co1-genmat.nb` similarly creates `data/co1matrices.m`.
-
-- `co1-actions.gap` computes the S, T, and P actions for commuting pairs of Conway 1.
-
-- `co1-actions.nb` creates the nice picture of SL(2,Z) orbits of commuting pairs of Conway 1.
-
-- `projection.gap` computes the projection from commuting pairs of Co0 to commuting pairs of Co1. 
-
-As the algorithm which computes the list of conjugacy classes is probablistic, the order of conjugacy classes is not guaranteed to be unique.  It would have been better to create Co1 and Co0 together in memory, but due to our historical development of the project, we already have setteld on a particular ordring for Co1 and Co0 separately. So, to compute the projection, one needs to somehow bring the chosen conjugacy class representatives from one to the other. To do this, we decided to do  `ccrr:=centralizerconjugacyclassreps; PrintTo("ccrr.txt",ccrr)` on the Conway 1 side, and then run `projection.gap` on the Conway 0 side.
 
 In `data/`,
 
@@ -52,6 +40,26 @@ In `data/`,
 
 - `irr0/irr-nnn.m` contains the character tables of the centralizers of representatives of conjugacy classes of the Conway 0 group. EE[n] is $e^{2\pi i/n}$.
 
+### Group Theory Computations for Conway 1
+
+Similar to Conway 0. As Conway 1 turns out to have mixed anomaly with $S_{24}$ and $A_{24}$, the computed data are less used. But they are included for easy access, when they become necessary in the future.
+
+In `group-theory/`,
+
+- `co1-prepare.nb` similarly constructs two generators of the permutation representation of Conway 1 on the set of length 2 vectors modulo ±1 in GAP notation. This creates `data/co1data.m` too.
+
+- `co1-genmat.nb` similarly creates `data/co1matrices.m`.
+
+- `co1-actions.gap` computes the S, T, and P actions for commuting pairs of Conway 1.
+
+- `co1-actions.nb` creates the nice picture of SL(2,Z) orbits of commuting pairs of Conway 1.
+
+- `projection.gap` computes the projection from commuting pairs of Co0 to commuting pairs of Co1. 
+
+As the algorithm which computes the list of conjugacy classes is probablistic, the order of conjugacy classes is not guaranteed to be unique.  It would have been better to create Co1 and Co0 together in memory, but due to our historical development of the project, we already have setteld on a particular ordring for Co1 and Co0 separately. So, to compute the projection, one needs to somehow bring the chosen conjugacy class representatives from one to the other. To do this, we decided to do  `ccrr:=centralizerconjugacyclassreps; PrintTo("ccrr.txt",ccrr)` on the Conway 1 side, and then run `projection.gap` on the Conway 0 side.
+
+In `data/`,
+
 - `co1sizes.m`, `co1images.m`, `co1actions.m`, `co1orbits.m` and `irr1/irr-nnn.m` do the same for Conway 1.
 
 - `projection.m` contains the mapping from Conway 0 commuting pairs to Conway 1 commuting pairs.
@@ -60,12 +68,14 @@ In `data/`,
 
 In `supercurrent/`,
 
-- `supercurrent-prepare.nb` prepares the data files needed to run the C++ program determines the supercurrent. It uses `V.m`, a fixed matrix diagonalizing our metric on $\mathbb{Z}^{24}$. This is easily determined by `Eigensystem`, but unfortunately its result is system-dependent. For consistency across collaborators, we need to compute it once, save it and reuse it.
+- `supercurrent-prepare.nb` prepares the data files named `cpp*.txt`, which are needed to run the C++ program determines the supercurrent. It uses `V.m`, a fixed matrix diagonalizing our metric on $\mathbb{Z}^{24}$. This is easily determined by `Eigensystem`, but unfortunately its result is system-dependent. For consistency across collaborators, we need to compute it once, save it and reuse it.
 
 - `FindSupercurrent.cpp` finds the supercurrent by first lifting two generators of Conway 0 to Spin(24) and finding the common one-dimensional subspace of the spinor representation. It uses the data files named `cpp*.txt` generated by `supercurrent-prepare.nb`.
 
-- `angles-prepare.nb`
+- `compute-angles.nb` computes the angles of commuting pairs using the supercurrent. Evaluate each line separately, and run `CalibrateAngles.cpp` as explained in the comment in it.
 
-- `CalibrateAngles.cpp` computes the information necessary to find the Spin(24) angles of each commuting pair, using the data files named `co0*.txt` generated by `angles-prepare.nb`.
+- `CalibrateAngles.cpp` computes the information necessary to find the Spin(24) angles of each commuting pair, using the data files named `co0*.txt` generated by `compute-angles.nb`.
 
-- `compute-angles.nb`
+In `data/`,
+
+- `co0angles.m` contains the computed angles of each "better" representative of SL(2,Z) orbits of commuting pairs.
