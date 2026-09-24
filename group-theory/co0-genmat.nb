@@ -1,0 +1,108 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      3842,        100]
+NotebookOptionsPosition[      3023,         81]
+NotebookOutlinePosition[      3431,         97]
+CellTagsIndexPosition[      3388,         94]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.913860371478997*^9, 3.913860384582925*^9}},
+ CellLabel->"In[58]:=",ExpressionUUID->"7b3552e8-9335-4c74-b414-33e838ba8ae0"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"<<", "\"\<../data/co0data.m\>\""}], ";"}]], "Input",
+ CellChangeTimes->{{3.913860385412168*^9, 3.913860388897813*^9}, {
+   3.985125398994625*^9, 3.985125403996147*^9}, 3.985125463821168*^9, {
+   3.9992149090497*^9, 3.999214930464879*^9}},
+ CellLabel->"In[88]:=",ExpressionUUID->"79acf3f5-55af-4169-86d5-a5a08bcefc5c"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"<<", "\"\<../data/co0images.m\>\""}], ";"}]], "Input",
+ CellChangeTimes->{{3.9138603965149183`*^9, 3.913860398279704*^9}, 
+   3.985125469966722*^9, {3.999214915631378*^9, 3.99921491995029*^9}},
+ CellLabel->"In[89]:=",ExpressionUUID->"ce7ba298-77de-476d-a1d7-759f04eca00e"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"toMat", "[", "v_", "]"}], ":=", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"vec", "[", 
+     RowBox[{"[", 
+      RowBox[{"v", "[", 
+       RowBox[{"[", "i", "]"}], "]"}], "]"}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "1", ",", "24"}], "}"}]}], "]"}], " "}]], "Input",
+ CellChangeTimes->{{3.913860434314028*^9, 3.9138604492403793`*^9}, {
+  3.913861099938226*^9, 3.913861100420484*^9}, {3.913861133312441*^9, 
+  3.9138611620307093`*^9}, {3.91386170753415*^9, 3.913861751978635*^9}, {
+  3.91386229411069*^9, 3.9138622984106827`*^9}, {3.913863766388035*^9, 
+  3.913863785719479*^9}, {3.91386381608558*^9, 3.913863816614104*^9}, {
+  3.985125481336256*^9, 3.985125483033685*^9}},
+ CellLabel->"In[90]:=",ExpressionUUID->"52404de4-215c-4a38-849d-9de656de5441"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"matrices", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"toMat", "/@", " ", "#"}], ")"}], "&"}], " ", "/@", " ", 
+    "images"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.913863963865842*^9, 3.91386397319139*^9}, {
+  3.913864004047501*^9, 3.9138640062300386`*^9}},
+ CellLabel->"In[91]:=",ExpressionUUID->"a07230e1-7a44-4372-87f5-fe6ebaaf1a66"],
+
+Cell[BoxData[
+ RowBox[{"Save", "[", 
+  RowBox[{"\"\<../data/co0matrices.m\>\"", ",", "matrices"}], "]"}]], "Input",\
+
+ CellChangeTimes->{{3.913863996051916*^9, 3.913864015331087*^9}, {
+  3.9992149375303497`*^9, 3.999214944698413*^9}},
+ CellLabel->"In[92]:=",ExpressionUUID->"dedffe8a-eecc-4803-97f7-a932918ffb0c"]
+},
+WindowSize->{808, 911},
+WindowMargins->{{478, Automatic}, {-39, Automatic}},
+FrontEndVersion->"14.0 for Mac OS X ARM (64-bit) (2023\:5e7412\:670812\:65e5)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"339adeac-cfc0-430e-8b7d-bbe38315da84"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 268, 5, 30, "Input",ExpressionUUID->"7b3552e8-9335-4c74-b414-33e838ba8ae0"],
+Cell[829, 27, 352, 6, 30, "Input",ExpressionUUID->"79acf3f5-55af-4169-86d5-a5a08bcefc5c"],
+Cell[1184, 35, 307, 5, 30, "Input",ExpressionUUID->"ce7ba298-77de-476d-a1d7-759f04eca00e"],
+Cell[1494, 42, 809, 17, 30, "Input",ExpressionUUID->"52404de4-215c-4a38-849d-9de656de5441"],
+Cell[2306, 61, 397, 10, 30, "Input",ExpressionUUID->"a07230e1-7a44-4372-87f5-fe6ebaaf1a66"],
+Cell[2706, 73, 313, 6, 30, "Input",ExpressionUUID->"dedffe8a-eecc-4803-97f7-a932918ffb0c"]
+}
+]
+*)
+
