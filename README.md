@@ -26,7 +26,13 @@ Note that the for-loops in `co0-actions.gap` and `co0-irr.gap` should better be 
 
 - `co1-genmat.nb` similarly creates `data/co1matrices.m`.
 
+- `co1-actions.nb` computes the S, T, and P actions for commuting pairs of Conway 1.
+
 - `co1-picture.nb` creates the nice picture of SL(2,Z) orbits of commuting pairs of Conway 1.
+
+- `projection.gap` computes the projection from commuting pairs of Co0 to commuting pairs of Co1. 
+
+As the algorithm which computes the list of conjugacy classes is probablistic, the order of conjugacy classes is not guaranteed to be unique.  It would have been better to create Co1 and Co0 together in memory, but due to our historical development of the project, we already have setteld on a particular ordring for Co1 and Co0 separately. So, to compute the projection, one needs to somehow bring the chosen conjugacy class representatives from one to the other. To do this, we decided to do  `ccrr:=centralizerconjugacyclassreps; PrintTo("ccrr.txt",ccrr)` on the Conway 1 side, and then run `projection.gap` on the Conway 0 side.
 
 In `data/`,
 
@@ -42,4 +48,4 @@ In `data/`,
 
 - `co1sizes.m`, `co1images.m`, `co1actions.m`, and `irr1/irr-nnn.m` do the same for Conway 1.
 
-
+- `projection.m` contains the mapping from Conway 0 commuting pairs to Conway 1 commuting pairs.
